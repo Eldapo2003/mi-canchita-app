@@ -8,7 +8,7 @@ st.set_page_config(page_title="Mi Canchita App", page_icon="⚽", layout="wide")
 # ==========================================
 # INYECCION DE CSS GLOBAL (diseño oscuro)
 # ==========================================
-st.markdown("""
+st.html("""
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
   /* ─── Variables ─── */
@@ -178,8 +178,12 @@ st.markdown("""
   /* ─── Quitar padding excesivo ─── */
   .block-container { padding-top: 0 !important; max-width: 100% !important; }
   [data-testid="stVerticalBlock"] { gap: 0.5rem !important; }
+  @keyframes float {
+    0%,100% { transform:translateY(0); }
+    50%      { transform:translateY(-12px); }
+  }
 </style>
-""", unsafe_allow_html=True)
+""")
 
 # ==========================================
 # SVG CONSTANTS
@@ -388,11 +392,7 @@ def render_navbar(nombre_usuario=None):
         avatar_html = """
         <div style="width:40px;height:40px;border-radius:50%;background:rgba(0,230,118,0.08);
                     border:2px solid rgba(0,230,118,0.25);display:flex;align-items:center;
-                    justify-content:center;">
-          <svg width="20" height="20" fill="none" stroke="#7a9ab0" stroke-width="1.8" viewBox="0 0 24 24">
-            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-          </svg>
-        </div>"""
+                    justify-content:center;color:#7a9ab0;font-size:18px;">&#128100;</div>"""
 
     st.markdown(f"""
     <div style="background:rgba(5,14,26,0.95);backdrop-filter:blur(16px);
@@ -435,12 +435,6 @@ if st.session_state.usuario_conectado is None:
             {FIELD_BALL_SVG}
           </div>
         </div>
-        <style>
-          @keyframes float {{
-            0%,100% {{ transform:translateY(0); }}
-            50%      {{ transform:translateY(-12px); }}
-          }}
-        </style>
         """, unsafe_allow_html=True)
 
     with col_form:
