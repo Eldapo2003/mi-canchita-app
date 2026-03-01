@@ -8,7 +8,7 @@ st.set_page_config(page_title="Mi Canchita App", page_icon="⚽", layout="wide")
 # ==========================================
 # INYECCION DE CSS GLOBAL (diseño oscuro)
 # ==========================================
-st.markdown("""
+st.html("""
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
   /* ─── Variables ─── */
@@ -179,7 +179,7 @@ st.markdown("""
   .block-container { padding-top: 0 !important; max-width: 100% !important; }
   [data-testid="stVerticalBlock"] { gap: 0.5rem !important; }
 </style>
-""", unsafe_allow_html=True)
+""")
 
 # ==========================================
 # SVG CONSTANTS
@@ -428,7 +428,7 @@ if st.session_state.usuario_conectado is None:
 
     with col_field:
         # Campo SVG con animación float
-        st.markdown(f"""
+        st.html(f"""
         <div style="padding:32px 16px 0 32px;">
           <div style="filter:drop-shadow(0 0 40px rgba(0,230,118,0.4)) drop-shadow(0 20px 60px rgba(0,0,0,0.6));
                       animation:float 4s ease-in-out infinite;">
@@ -441,7 +441,7 @@ if st.session_state.usuario_conectado is None:
             50%      {{ transform:translateY(-12px); }}
           }}
         </style>
-        """, unsafe_allow_html=True)
+        """)
 
     with col_form:
         st.markdown("<div style='padding:40px 24px 0 16px;'>", unsafe_allow_html=True)
