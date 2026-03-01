@@ -392,7 +392,7 @@ def render_navbar(nombre_usuario=None):
         avatar_html = """
         <div style="width:40px;height:40px;border-radius:50%;background:rgba(0,230,118,0.08);
                     border:2px solid rgba(0,230,118,0.25);display:flex;align-items:center;
-                    justify-content:center;color:#7a9ab0;font-size:18px;">&#128100;</div>"""
+                    justify-content:center;color:#7a9ab0;font-size:18px;">👤</div>"""
 
     st.markdown(f"""
     <div style="background:rgba(5,14,26,0.95);backdrop-filter:blur(16px);
@@ -430,10 +430,7 @@ if st.session_state.usuario_conectado is None:
         # Campo SVG con animación float
         st.markdown(f"""
         <div style="padding:32px 16px 0 32px;">
-          <div style="filter:drop-shadow(0 0 40px rgba(0,230,118,0.4)) drop-shadow(0 20px 60px rgba(0,0,0,0.6));
-                      animation:float 4s ease-in-out infinite;">
             {FIELD_BALL_SVG}
-          </div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -575,11 +572,8 @@ if user["tipo"] == "cliente":
 
     with col_hero:
         st.markdown(f"""
-        <div style="padding:16px 0 0 8px;">
-          <div style="filter:drop-shadow(0 0 30px rgba(0,230,118,0.35));
-                      animation:float 4s ease-in-out infinite;max-width:480px;">
+        <div style="padding:16px 0 0 8px;max-width:480px;">
             {FIELD_BALL_SVG}
-          </div>
         </div>
         """, unsafe_allow_html=True)
 
