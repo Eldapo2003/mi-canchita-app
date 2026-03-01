@@ -394,7 +394,7 @@ def render_navbar(nombre_usuario=None):
           </svg>
         </div>"""
 
-    st.markdown(f"""
+    st.html(f"""
     <div style="background:rgba(5,14,26,0.95);backdrop-filter:blur(16px);
                 border-bottom:1px solid rgba(0,230,118,0.12);
                 padding:14px 32px;margin-bottom:0;
@@ -415,7 +415,7 @@ def render_navbar(nombre_usuario=None):
       </div>
       {avatar_html}
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
 # ==========================================
 # 3. LOGIN / REGISTRO
@@ -444,8 +444,8 @@ if st.session_state.usuario_conectado is None:
         """)
 
     with col_form:
-        st.markdown("<div style='padding:40px 24px 0 16px;'>", unsafe_allow_html=True)
-        st.markdown("""
+        st.html("<div style='padding:40px 24px 0 16px;'>")
+        st.html("""
         <h1 style="font-family:'Bebas Neue',sans-serif;font-size:2.8rem;
                    color:#e8f4f8;letter-spacing:2px;margin-bottom:4px;">
           BIENVENIDO
@@ -453,7 +453,7 @@ if st.session_state.usuario_conectado is None:
         <p style="color:#7a9ab0;margin-bottom:24px;font-size:14px;">
           Reserva tu cancha favorita en segundos
         </p>
-        """, unsafe_allow_html=True)
+        """)
 
         opcion = st.radio("", ["Ingresar", "Registrarse"], horizontal=True, label_visibility="collapsed")
 
@@ -478,10 +478,10 @@ if st.session_state.usuario_conectado is None:
                 else:
                     st.error("Verifica que los datos sean correctos.")
 
-        st.markdown("</div>", unsafe_allow_html=True)
+        st.html("</div>")
 
     # Feature cards
-    st.markdown("<div style='height:32px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:32px'></div>")
     c1, c2, c3 = st.columns(3)
     cards = [
         ("📅", "Reservas",      "Haz tu reserva de cancha fácilmente desde cualquier lugar."),
@@ -505,11 +505,11 @@ if st.session_state.usuario_conectado is None:
             <div style="font-size:13px;color:#7a9ab0;line-height:1.5;">{desc}</div>
           </div>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
     # Disclaimer WhatsApp
-    st.markdown("<div style='height:32px'></div>", unsafe_allow_html=True)
-    st.markdown("""
+    st.html("<div style='height:32px'></div>")
+    st.html("""
     <div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid #25d366;
                 padding:24px;border-radius:12px;text-align:center;max-width:600px;margin:0 auto;">
       <h4 style="color:#ffffff;margin-bottom:8px;font-size:1.1rem;">
@@ -525,15 +525,15 @@ if st.session_state.usuario_conectado is None:
         💬 Contratar Servicios (WhatsApp)
       </a>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     # Footer
-    st.markdown("""
+    st.html("""
     <div style="text-align:center;padding:32px;color:#3a5a70;font-size:13px;margin-top:40px;
                 border-top:1px solid rgba(0,230,118,0.08);">
       © 2024 Mi Canchita · Todos los derechos reservados
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     st.stop()
 
@@ -545,7 +545,7 @@ render_navbar(user["nombre"])
 
 # Sidebar simplificado
 with st.sidebar:
-    st.markdown(f"""
+    st.html(f"""
     <div style="padding:16px 0;">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
         <div style="width:40px;height:40px;border-radius:50%;background:rgba(0,230,118,0.1);
@@ -559,7 +559,7 @@ with st.sidebar:
         </div>
       </div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
     if st.button("🚪 Cerrar Sesión", use_container_width=True):
         st.session_state.usuario_conectado = None
         st.rerun()
@@ -580,17 +580,17 @@ if user["tipo"] == "cliente":
     col_hero, col_right = st.columns([1.3, 1])
 
     with col_hero:
-        st.markdown(f"""
+        st.html(f"""
         <div style="padding:16px 0 0 8px;">
           <div style="filter:drop-shadow(0 0 30px rgba(0,230,118,0.35));
                       animation:float 4s ease-in-out infinite;max-width:480px;">
             {FIELD_BALL_SVG}
           </div>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
         # Botón RESERVAR visual
-        st.markdown("""
+        st.html("""
         <div style="display:flex;justify-content:center;margin-top:8px;">
           <div style="background:linear-gradient(135deg,#003d1f,#006633);
                       border:2px solid #00e676;color:#00e676;
@@ -600,22 +600,22 @@ if user["tipo"] == "cliente":
             RESERVAR
           </div>
         </div>
-        """, unsafe_allow_html=True)
+        """)
 
     with col_right:
-        st.markdown("<div style='padding:24px 8px 0 16px;'>", unsafe_allow_html=True)
-        st.markdown("""
+        st.html("<div style='padding:24px 8px 0 16px;'>")
+        st.html("""
         <h2 style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;
                    color:#e8f4f8;letter-spacing:1px;margin-bottom:4px;">
           PRÓXIMOS PARTIDOS
         </h2>
-        """, unsafe_allow_html=True)
+        """)
 
         # Lista de reservas recientes como "partidos"
         reservas_recientes = st.session_state.base_reservas[-4:] if st.session_state.base_reservas else []
         if reservas_recientes:
             for r in reversed(reservas_recientes):
-                st.markdown(f"""
+                st.html(f"""
                 <div style="display:flex;align-items:center;gap:12px;padding:12px 0;
                             border-bottom:1px solid rgba(0,230,118,0.08);">
                   <div style="width:32px;height:32px;background:rgba(0,230,118,0.08);
@@ -626,10 +626,10 @@ if user["tipo"] == "cliente":
                     <div style="font-size:11px;color:#7a9ab0;">{r['Fecha']} · {r['Hora']}</div>
                   </div>
                 </div>
-                """, unsafe_allow_html=True)
+                """)
         else:
             for i, item in enumerate([("20 de abril","Cancha Techada"),("22 de abril","Cancha Padel #1"),("25 de abril","Cancha Descubierta"),("30 de abril","Cancha Padel #2")]):
-                st.markdown(f"""
+                st.html(f"""
                 <div style="display:flex;align-items:center;gap:12px;padding:12px 0;
                             border-bottom:1px solid rgba(0,230,118,0.08);">
                   <div style="width:32px;height:32px;background:rgba(0,230,118,0.08);
@@ -642,11 +642,11 @@ if user["tipo"] == "cliente":
                     <div style="font-size:11px;color:#7a9ab0;">{item[0]}</div>
                   </div>
                 </div>
-                """, unsafe_allow_html=True)
+                """)
 
-        st.markdown("</div>", unsafe_allow_html=True)
+        st.html("</div>")
 
-    st.markdown("<div style='height:24px'></div>", unsafe_allow_html=True)
+    st.html("<div style='height:24px'></div>")
     st.divider()
     st.subheader("Reserva tu Cancha")
 
@@ -687,7 +687,7 @@ if user["tipo"] == "cliente":
                         if prod.get("imagen"):
                             st.image(prod["imagen"], use_container_width=True)
                         else:
-                            st.markdown("<div style='text-align:center;font-size:2rem'>🛒</div>", unsafe_allow_html=True)
+                            st.html("<div style='text-align:center;font-size:2rem'>🛒</div>")
                         st.write(f"**{prod['nombre']}**")
                         st.caption(f"${prod['precio']:.2f} | Stock: {prod['stock']}")
                         cant = st.number_input("Cantidad", 0, prod["stock"], 0, key=f"bar_{complejo_id}_{prod['id']}")
@@ -740,13 +740,13 @@ else:
     complejo = st.session_state.complejos[complejo_id]
     cfg = complejo["info"]
 
-    st.markdown(f"""
+    st.html(f"""
     <div style="padding:24px 32px 8px;">
       <h1 style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:#e8f4f8;
                  letter-spacing:1.5px;margin:0;">🛠️ PANEL ADMINISTRATIVO</h1>
       <p style="color:#00e676;font-size:13px;margin:0;">{cfg['nombre']}</p>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "📋 Reservas", "🏟️ Establecimiento", "⚽ Canchas", "🍺 Bar y Productos", "🕐 Horarios"
@@ -782,7 +782,7 @@ else:
         st.divider()
         st.caption("Vista previa para clientes:")
         with st.container(border=True):
-            st.markdown(f"### 🏟️ {cfg['nombre']}")
+            st.html(f"### 🏟️ {cfg['nombre']}")
             st.write(cfg.get("descripcion",""))
             ci, cd = st.columns(2)
             ci.write(f"📍 {cfg.get('direccion','')}")
@@ -897,7 +897,7 @@ else:
                     cp1,cp2,cp3,cp4,cp5 = st.columns([0.7,2.5,1.2,2,0.8])
                     with cp1:
                         if prod.get("imagen"): st.image(prod["imagen"], width=55)
-                        else: st.markdown("<div style='font-size:1.8rem;text-align:center'>🛒</div>", unsafe_allow_html=True)
+                        else: st.html("<div style='font-size:1.8rem;text-align:center'>🛒</div>")
                     with cp2:
                         st.write(f"{'🟢' if prod['activo'] else '🔴'} **{prod['nombre']}**")
                         st.caption(prod["categoria"])
@@ -970,16 +970,16 @@ else:
         for idx, (dia, datos) in enumerate(horarios.items()):
             with cols_h[idx]:
                 with st.container(border=True):
-                    st.markdown(f"<div style='text-align:center'><b>{dia[:3]}</b></div>", unsafe_allow_html=True)
+                    st.html(f"<div style='text-align:center'><b>{dia[:3]}</b></div>")
                     if datos["abierto"]:
-                        st.markdown(f"<div style='text-align:center;color:#00e676;font-size:0.75rem'>{datos['apertura']}<br>↕<br>{datos['cierre']}</div>", unsafe_allow_html=True)
+                        st.markdown(f"<div style='text-align:center;color:#00e676;font-size:0.75rem'>{datos['apertura']}<br>↕<br>{datos['cierre']}</div>")
                     else:
-                        st.markdown("<div style='text-align:center;color:#ff4b4b;font-size:0.8rem'>Cerrado</div>", unsafe_allow_html=True)
+                        st.html("<div style='text-align:center;color:#ff4b4b;font-size:0.8rem'>Cerrado</div>")
 
 # Footer
-st.markdown("""
+st.html("""
 <div style="text-align:center;padding:24px;color:#3a5a70;font-size:12px;
             border-top:1px solid rgba(0,230,118,0.08);margin-top:40px;">
   © 2024 Mi Canchita · Todos los derechos reservados
 </div>
-""", unsafe_allow_html=True)
+""")
